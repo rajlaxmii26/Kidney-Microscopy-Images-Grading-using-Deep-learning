@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Microscopy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Palatino Linotype', serif;
+            /* Define gradient background */
+            /* background: linear-gradient(to bottom, #01202e, #33b8f1), url('/static/BG.jpg'); */
+             background:url('/static/BG1.jpg');
+            background-size: cover; /* Ensure the background image covers the entire viewport */
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding-bottom: 60px; /* Add padding to accommodate footer */
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            /* Specify relative path to the background image */
+            background: rgba(51, 184, 241, 0.5);
+            /*url('/static/Untitled design.png') center/cover;*/
+            padding: 10px 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-upload, button[type="submit"] {
+            background-color:rgba(51, 184, 241, 0.9);
+            color: white;
+            padding: 8px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            font-family: 'Palatino Linotype', serif;
+            margin: 0 10px;
+        }
+        .custom-file-upload:hover, button[type="submit"]:hover {
+            background-color: #33b8f184;
+        }
+        input[type="file"]:focus + .custom-file-upload {
+            background-color: #4CAF50; /* Change when file is selected */
+        }
+        /* Additional styling for selected file */
+        input[type="file"]:focus + .custom-file-upload::before {
+            content: "File Selected"; /* Add text when file is selected */
+            color: white;
+        }
+        /* Flexbox styling for button alignment */
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        /* Footer styles */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #01202e;
+            padding: 1px 0; /* Smaller padding */
+            text-align: center;
+            color: white;
+            font-size: 1.0rem; /* Smaller font size */
+            font-weight: bold; /* Make the footer text bold */
+        }
+        .team-members {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #33b8f184;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            position: relative; /* Position for tooltip */
+            cursor: pointer;
+        }
+        /* Tooltip style */
+        .profile-icon:hover::after {
+            content: attr(data-name);
+            position: absolute;
+            top: -30px; /* Position above the profile icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #01202e;
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kidney Microscopy</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input id="file-upload" type="file" name="image" accept="image/*">
+            <label for="file-upload" class="custom-file-upload">
+                Select Image
+            </label>
+            <div class="form-buttons">
+                <button type="submit">Upload</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>Please upload the image, and let the model predict the grade of the image</p>
+        <div class="team-members">
+            <div class="profile-icon" data-name="Simran Jamadar">DS15</div>
+            <div class="profile-icon" data-name="Sneha Magdum">DS24</div>
+            <div class="profile-icon" data-name="Sufiya Mulla">DS75</div>
+            <div class="profile-icon" data-name="Rajlaxmi Mandavkar">DS77</div>
+        </div>
+    </footer>
+</body>
+</html>
